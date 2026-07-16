@@ -1,0 +1,61 @@
+# NLU 意图识别配置
+
+nlu:
+  # 接受分类结果的最低置信度阈值
+  intent_threshold: 0.6
+  # 是否启用多标签分类
+  enable_multilabel: false
+  # 无匹配意图时的回退置信度
+  fallback_confidence: 0.4
+
+  classifier:
+    type: "hybrid"
+
+  entity:
+    enable: true
+    types:
+      - order_no
+      - phone
+      - product_name
+      - price
+      - date
+      - tracking_no
+      - email
+
+  intents:
+    - code: order_query
+      name: 订单查询
+      handler: tool
+      priority: 8
+    - code: order_modify
+      name: 订单修改
+      handler: tool
+      priority: 8
+    - code: refund_request
+      name: 退款退货
+      handler: tool
+      priority: 10
+    - code: product_inquiry
+      name: 商品咨询
+      handler: rag
+      priority: 5
+    - code: shipping_info
+      name: 配送信息
+      handler: rag
+      priority: 5
+    - code: payment_issue
+      name: 支付问题
+      handler: tool
+      priority: 8
+    - code: complaint
+      name: 投诉
+      handler: transfer
+      priority: 10
+    - code: human_agent
+      name: 要求人工
+      handler: transfer
+      priority: 10
+    - code: greeting
+      name: 问候
+      handler: llm
+      priority: 1

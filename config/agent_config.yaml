@@ -1,0 +1,24 @@
+# Agent 配置
+
+agent:
+  name: "小E"
+  personality: "专业、友好、耐心"
+
+  react:
+    max_iterations: 5
+    timeout_seconds: 30
+    enable_reflection: false
+
+  transfer:
+    auto_transfer_on_complaint: true
+    auto_transfer_on_negative: true
+    auto_transfer_threshold: -0.5
+    manual_trigger_keywords:
+      - "人工客服"
+      - "真人"
+      - "找人工"
+      - "转接"
+
+  quality:
+    min_confidence: 0.5
+    max_response_length: 2000
